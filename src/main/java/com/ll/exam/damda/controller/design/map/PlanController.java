@@ -21,7 +21,7 @@ public class PlanController {
         return "/design/map/new_plan";
     }
     @PostMapping("/new")
-    public String createPlan(@RequestParam(value = "title") String title, @RequestParam(value = "size", defaultValue = "1") long size) {
+    public String createPlan(@RequestParam(value = "title") String title, @RequestParam(value = "size") long size) {
         Plan plan = planService.create(title, size);
         return "redirect:/search/design/modification/%d?order=%d".formatted(plan.getId(), 1);
     }
@@ -29,8 +29,8 @@ public class PlanController {
     public String modifyPlan(Model model, @PathVariable("planId") long planId, @RequestParam(value = "order") long order) {
         Plan plan = planService.getPlan(planId);
         Course course = courseService.getCourse(plan, order);
-//        model.addAttribute("plan", plan);
-//        model.addAttribute("course", course);
+        model.addAttribute("plan", plan);
+        model.addAttribute("course", course);
         return "/design/map/modify_plan";
     }
 }

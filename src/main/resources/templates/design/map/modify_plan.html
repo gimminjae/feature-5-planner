@@ -5,9 +5,15 @@
     </div>
     <div class="mx-2" style="width: 65%;">
         <div class="d-flex container justify-content-around mb-2">
-            <button class="px-5 card card">이전 날짜</button>
-            <button class="px-5 card card">현재 날짜</button>
-            <button class="px-5 card card">다음 날짜</button>
+            <a class="px-5 card card"
+                    th:if="${course.id - 1 > 0}"
+                    th:href="@{|?order=${course.orders - 1}|}">
+                이전 날짜
+            </a>
+            <a class="px-5 card card">현재 날짜</a>
+            <a class="px-5 card card"
+                    th:if="${course.id + 1 <= plan.size}"
+                    th:href="@{|?order=${course.orders + 1}|}">다음 날짜</a>
         </div>
         <div class="card card mb-2" style="height:10%;">여행지 목록</div>
         <!--지도-->
