@@ -38,6 +38,10 @@ public class Spot {
     @ManyToOne
     private Course course;
 
+    private String x;
+
+    private String y;
+
 //    @OneToMany(mappedBy = "spot")
 //    @Builder.Default
 //    private List<SpotImage> spotImageURLList = new ArrayList<>();

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,5 +29,14 @@ public class CourseService {
             }
         }
         return null;
+    }
+
+    public Course getCourseById(long courseId) {
+        Optional<Course> optionalCourse = courseRepository.findById(courseId);
+        if(optionalCourse.isPresent()) {
+            return optionalCourse.get();
+        } else {
+            return null;
+        }
     }
 }

@@ -173,7 +173,7 @@
                 }
 
                 itemStr += '  <span class="tel">' + places.phone + '</span>' +
-                    '<button class="btn btn-primary p-2" onclick="planInsert(\'' + places.place_name + '\',\'' + places.y + '\',\'' + places.address_name +  '\',\'' + places.x +  '\')">담기</button>'
+                    '<button class="btn btn-primary p-2" onclick="planInsert(\'' + places.place_name + '\',\'' + places.address_name + '\',\'' + places.x +  '\',\'' + places.y +  '\')">담기</input>'
                     '</div>';
 
                 el.innerHTML = itemStr;
@@ -181,14 +181,27 @@
 
                 return el;
             }
-            function planInsert(place_name, place_address, place_y,place_x) {
-                fetch('/search/design/insertspot')
-                    .then(data => console.log("name : " + place_name))
-                    .then(response => alert('planInsert'));
+
+            function planInsert(place_name, place_address, place_x, place_y) {
+                $.ajax({
+                    type: "post", //요청타입
+                    url:`/search/design/insertSpot/1`, //url
+                    data: {
+                        name: place_name,
+                        address: place_address,
+                        x: place_x,
+                        y: place_y
+                    },  //보낼 파라미터 데이터
+                    dataType: "text", //http통신 후 응답 데이터 타입
+                    success: function () {
+                        console.log("success");
+                    } // ajax성공 후 실행할 함수, 서버에서 response 값을 받아서 처리할 수 있다.
+                });
             }
-            function  getBusket() {
+            function getBusket(res) {
                 console.log('getBusket');
             }
+
 
             // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
             function addMarker(position, idx, title) {
