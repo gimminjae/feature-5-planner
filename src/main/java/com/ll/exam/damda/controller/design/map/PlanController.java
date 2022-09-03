@@ -43,9 +43,9 @@ public class PlanController {
         return "/design/map/modify_plan";
     }
 
-    @PostMapping("/insertSpot/{courseid}")
+    @PostMapping("/insertSpot")
     @ResponseBody
-    public String insertBusket(@PathVariable long courseid,
+    public String insertBusket(
                                @RequestParam(value = "name") String name,
                                @RequestParam(value = "address") String address,
                                @RequestParam(value = "x") String x,
