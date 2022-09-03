@@ -173,12 +173,16 @@
                 }
 
                 itemStr += '  <span class="tel">' + places.phone + '</span>' +
+                    '<button class="btn btn-primary p-2" onclick="planInsert(\'' + places.place_name + '\',\'' + places.y + '\',\'' + places.x +  '\')">담기</button>'
                     '</div>';
 
                 el.innerHTML = itemStr;
                 el.className = 'item';
 
                 return el;
+            }
+            function planInsert(place_name,place_y,place_x) {
+                console.log("name : " + place_name)
             }
 
             // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다

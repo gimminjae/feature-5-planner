@@ -16,6 +16,12 @@ public class PlanController {
     private final PlanService planService;
     private final CourseService courseService;
 
+
+    @GetMapping("/list")
+    @ResponseBody
+    public String list() {
+        return "list";
+    }
     @GetMapping("/new")
     public String createPlan() {
         return "/design/map/new_plan";
