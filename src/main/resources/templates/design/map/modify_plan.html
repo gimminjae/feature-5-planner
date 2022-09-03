@@ -38,6 +38,7 @@
         <script type="text/javascript"
                 src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c67e5e4d2bd37b972933cf07ff9ec9a7&libraries=services"></script>
         <script>
+            // var courseId =
             // 마커를 담을 배열입니다
             var markers = [];
 
@@ -183,9 +184,10 @@
             }
 
             function planInsert(place_name, place_address, place_x, place_y) {
+                // fetch(`search/design/insertSpot/${course.id}`)
                 $.ajax({
                     type: "post", //요청타입
-                    url:`/search/design/insertSpot/1`, //url
+                    url:`/search/design/insertSpot/${}`, //url
                     data: {
                         name: place_name,
                         address: place_address,
