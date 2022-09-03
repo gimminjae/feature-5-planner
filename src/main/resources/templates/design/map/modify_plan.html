@@ -1,10 +1,10 @@
 <html layout:decorate="~{layout/layout}">
-<div layout:fragment="content" class="text-center d-flex justify-content-around"
+<div layout:fragment="content" class=" d-flex justify-content-around"
      style="width:95%; height:100%; position:absolute;">
     <div class="card card text-center py-3" style="width:20%; height:80%;">
         장바구니
     </div>
-    <div class="mx-2" style="width: 65%;">
+    <div class="mx-2" style="width: 65%; height: 80%">
         <div class="d-flex container justify-content-around mb-2">
             <a class="px-5 card card"
                th:if="${course.id - 1 > 0}"
@@ -19,7 +19,7 @@
         <div class="card card mb-2" style="height:10%;">여행지 목록</div>
         <!--지도-->
         <div class="map_wrap">
-            <div id="map" style="width:100%;height:130%;position:relative;overflow:hidden;"></div>
+            <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
 
             <div id="menu_wrap" class="bg_white">
                 <div class="option">
@@ -174,7 +174,7 @@
                 }
 
                 itemStr += '  <span class="tel">' + places.phone + '</span>' +
-                    '<button class="btn btn-primary p-2" onclick="planInsert(\'' + places.place_name + '\',\'' + places.address_name + '\',\'' + places.x +  '\',\'' + places.y +  '\')">담기</input>'
+                    '<button class="btn btn-primary p-2 mx-3" style="float:right" onclick="planInsert(\'' + places.place_name + '\',\'' + places.address_name + '\',\'' + places.x +  '\',\'' + places.y +  '\')">담기</input>'
                     '</div>';
 
                 el.innerHTML = itemStr;
