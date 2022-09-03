@@ -1,7 +1,7 @@
 <html layout:decorate="~{layout/layout}">
 <div layout:fragment="content" class=" d-flex justify-content-around"
      style="width:95%; height:100%; position:absolute;">
-    <div class="card card text-center py-3" style="width:20%; height:80%;">
+    <div class="busket card card text-center py-3" style="width:20%; height:80%;">
         장바구니
     </div>
     <div class="mx-2" style="width: 65%; height: 80%">
@@ -195,14 +195,18 @@
                         y: place_y
                     },  //보낼 파라미터 데이터
                     dataType: "text", //http통신 후 응답 데이터 타입
-                    success: function () {
-                        console.log("success");
+                    success: function (res) {
+                        console.log('success');
+                        const html = `
+                        <div class="card card my-1 mx-2">담기 버튼 수행됨</div>
+                        `;
+                        $('.busket').append(html);
                     } // ajax성공 후 실행할 함수, 서버에서 response 값을 받아서 처리할 수 있다.
                 });
             }
-            function getBusket(res) {
-                console.log('getBusket');
-            }
+            // function getBusket(res) {
+            //     console.log('getBusket');
+            // }
 
 
             // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
