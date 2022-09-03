@@ -173,7 +173,7 @@
                 }
 
                 itemStr += '  <span class="tel">' + places.phone + '</span>' +
-                    '<button class="btn btn-primary p-2" onclick="planInsert(\'' + places.place_name + '\',\'' + places.y + '\',\'' + places.x +  '\')">담기</button>'
+                    '<button class="btn btn-primary p-2" onclick="planInsert(\'' + places.place_name + '\',\'' + places.y + '\',\'' + places.address_name +  '\',\'' + places.x +  '\')">담기</button>'
                     '</div>';
 
                 el.innerHTML = itemStr;
@@ -181,8 +181,13 @@
 
                 return el;
             }
-            function planInsert(place_name,place_y,place_x) {
-                console.log("name : " + place_name)
+            function planInsert(place_name, place_address, place_y,place_x) {
+                fetch('/search/design/insertspot')
+                    .then(data => console.log("name : " + place_name))
+                    .then(response => alert('planInsert'));
+            }
+            function  getBusket() {
+                console.log('getBusket');
             }
 
             // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
