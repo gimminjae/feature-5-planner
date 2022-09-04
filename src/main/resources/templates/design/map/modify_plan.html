@@ -8,18 +8,20 @@
         <div class="d-flex container justify-content-around mb-2">
             <a class="px-5 card card"
                th:if="${course.id - 1 > 0}"
-               th:href="@{|?order=${course.orders - 1}|}">
-                이전 날짜
+               th:href="@{|?order=${course.orders - 1}|}"
+               th:text="|${course.orders - 1}일차|"
+            >
             </a>
-            <a class="px-5 card card">현재 날짜</a>
+            <a class="px-5 card card" th:text="|${course.orders}일차|"></a>
             <a class="px-5 card card"
                th:if="${course.id + 1 <= plan.size}"
-               th:href="@{|?order=${course.orders + 1}|}">다음 날짜</a>
+               th:text="|${course.orders + 1}일차|"
+               th:href="@{|?order=${course.orders + 1}|}"></a>
         </div>
-        <div class="card card mb-2" style="height:10%;">여행지 목록</div>
+        <div class="card card mb-2" style="height:10%; height: 15%;">여행지 목록</div>
         <!--지도-->
         <div class="map_wrap">
-            <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+            <div id="map" style="width:100%;height:100%;position:absolute;overflow:hidden;"></div>
 
             <div id="menu_wrap" class="bg_white">
                 <div class="option">
@@ -174,7 +176,7 @@
                 }
 
                 itemStr += '  <span class="tel">' + places.phone + '</span>' +
-                    '<button class="btn btn-primary p-2 mx-3" style="float:right" onclick="planInsert(\'' + places.place_name + '\',\'' + places.address_name + '\',\'' + places.x +  '\',\'' + places.y +  '\')">담기</input>'
+                    '<button class="btn btn-primary p-2 mx-3" style="float:right" onclick="planInsert(\'' + places.place_name + '\',\'' + places.address_name + '\',\'' + places.id +  '\',\'' + places.x +  '\',\'' + places.y +  '\')">담기</input>'
                     '</div>';
 
                 el.innerHTML = itemStr;
@@ -183,7 +185,8 @@
                 return el;
             }
 
-            function planInsert(place_name, place_address, place_x, place_y) {
+            function planInsert(place_name, place_address, place_id, place_x, place_y) {
+                console.log("name : " + place_name, "address : " + place_address, "url : " + place_url);
                 // fetch(`search/design/insertSpot/${course.id}`)
                 $.ajax({
                     type: "post", //요청타입
@@ -191,6 +194,7 @@
                     data: {
                         name: place_name,
                         address: place_address,
+                        id: place_id,
                         x: place_x,
                         y: place_y
                     },  //보낼 파라미터 데이터

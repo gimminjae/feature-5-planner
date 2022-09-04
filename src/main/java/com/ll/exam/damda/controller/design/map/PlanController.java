@@ -48,6 +48,7 @@ public class PlanController {
     public String insertBusket(
                                @RequestParam(value = "name") String name,
                                @RequestParam(value = "address") String address,
+                               @RequestParam(value = "id") String id,
                                @RequestParam(value = "x") String x,
                                @RequestParam(value = "y") String y) {
         System.out.println("insertBusket 수행");
