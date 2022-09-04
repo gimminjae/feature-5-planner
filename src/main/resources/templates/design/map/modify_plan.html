@@ -202,8 +202,8 @@
                     success: function (spot) {
                         console.log(spot);
                         const html = `
-                        <div class="card card my-1 mx-2">
-                        <a class="font-weight-bold" onclick=window.open("http://place.map.kakao.com/${spot.urlId}")>${spot.name}</a>
+                        <div class="card card my-1 mx-2" onclick=window.open("http://place.map.kakao.com/${spot.urlId}")>
+                        <a class="font-weight-bold">${spot.name}</a>
                         <span>${spot.address}</span>
                         </div>
                         `;
