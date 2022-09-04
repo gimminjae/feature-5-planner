@@ -185,8 +185,8 @@
                 return el;
             }
 
-            function planInsert(place_name, place_address, place_id, place_x, place_y) {
-                console.log("name : " + place_name, "address : " + place_address, "id : " + place_id);
+            function planInsert(place_name, place_address, place_urlId, place_x, place_y) {
+                console.log("name : " + place_name, "address : " + place_address, "urlId : " + place_urlId);
                 // fetch(`/search/design/insertSpot/${course.id}`)
                 $.ajax({
                     type: "post", //요청타입
@@ -194,7 +194,7 @@
                     data: {
                         name: place_name,
                         address: place_address,
-                        id: place_id,
+                        urlId: place_urlId,
                         x: place_x,
                         y: place_y
                     },  //보낼 파라미터 데이터
@@ -203,7 +203,7 @@
                         console.log(spot);
                         const html = `
                         <div class="card card my-1 mx-2">
-                        <a class="font-weight-bold" href="https://naver.com">${spot.name}</a>
+                        <a class="font-weight-bold" onclick=window.open("http://place.map.kakao.com/${spot.urlId}")>${spot.name}</a>
                         <span>${spot.address}</span>
                         </div>
                         `;

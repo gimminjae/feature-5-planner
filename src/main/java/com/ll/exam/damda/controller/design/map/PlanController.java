@@ -51,12 +51,12 @@ public class PlanController {
     public String insertBusket(
                                @RequestParam(value = "name") String name,
                                @RequestParam(value = "address") String address,
-                               @RequestParam(value = "id") String id,
+                               @RequestParam(value = "urlId") String urlId,
                                @RequestParam(value = "x") String x,
                                @RequestParam(value = "y") String y) throws JsonProcessingException {
         System.out.println("insertBusket 수행");
 //        Course course = courseService.getCourseById(courseId);
-        Spot spot = spotService.create(name, address, x, y);
+        Spot spot = spotService.create(name, address, urlId, x, y);
         String spotJson = objectMapper.writeValueAsString(spot);
         System.out.println(spotJson);
         return spotJson;

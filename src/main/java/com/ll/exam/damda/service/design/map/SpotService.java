@@ -11,10 +11,11 @@ import org.springframework.stereotype.Service;
 public class SpotService {
     private final SpotRepository spotRepository;
 
-    public Spot create(String name, String address, String x, String y) {
+    public Spot create(String name, String address, String urlId, String x, String y) {
         Spot spot = new Spot();
         spot.setName(name);
         spot.setAddress(address);
+        spot.setUrlId(urlId);
         spot.setX(x);
         spot.setY(y);
 //        spot.setCourse(course);

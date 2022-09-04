@@ -38,6 +38,8 @@ public class Spot {
     @ManyToOne
     private Course course;
 
+    private String urlId;
+
     private String x;
 
     private String y;
