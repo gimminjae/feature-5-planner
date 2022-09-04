@@ -1,5 +1,7 @@
 package com.ll.exam.damda.controller.design.map;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ll.exam.damda.entity.design.map.Course;
 import com.ll.exam.damda.entity.design.map.Plan;
 import com.ll.exam.damda.entity.search.Spot;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/search/design")
 public class PlanController {
+    private final ObjectMapper objectMapper;
     private final PlanService planService;
     private final CourseService courseService;
     private final SpotService spotService;
@@ -50,12 +53,13 @@ public class PlanController {
                                @RequestParam(value = "address") String address,
                                @RequestParam(value = "id") String id,
                                @RequestParam(value = "x") String x,
-                               @RequestParam(value = "y") String y) {
+                               @RequestParam(value = "y") String y) throws JsonProcessingException {
         System.out.println("insertBusket 수행");
 //        Course course = courseService.getCourseById(courseId);
         Spot spot = spotService.create(name, address, x, y);
-
-        return "success";
+        String spotJson = objectMapper.writeValueAsString(spot);
+        System.out.println(spotJson);
+        return spotJson;
 
     }
 }

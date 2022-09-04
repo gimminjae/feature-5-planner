@@ -176,8 +176,8 @@
                 }
 
                 itemStr += '  <span class="tel">' + places.phone + '</span>' +
-                    '<button class="btn btn-primary p-2 mx-3" style="float:right" onclick="planInsert(\'' + places.place_name + '\',\'' + places.address_name + '\',\'' + places.id +  '\',\'' + places.x +  '\',\'' + places.y +  '\')">담기</input>'
-                    '</div>';
+                    '<button class="btn btn-primary p-2 mx-3" style="float:right" onclick="planInsert(\'' + places.place_name + '\',\'' + places.address_name + '\',\'' + places.id + '\',\'' + places.x + '\',\'' + places.y + '\')">담기</input>'
+                '</div>';
 
                 el.innerHTML = itemStr;
                 el.className = 'item';
@@ -186,11 +186,11 @@
             }
 
             function planInsert(place_name, place_address, place_id, place_x, place_y) {
-                console.log("name : " + place_name, "address : " + place_address, "url : " + place_url);
-                // fetch(`search/design/insertSpot/${course.id}`)
+                console.log("name : " + place_name, "address : " + place_address, "id : " + place_id);
+                // fetch(`/search/design/insertSpot/${course.id}`)
                 $.ajax({
                     type: "post", //요청타입
-                    url:`/search/design/insertSpot`, //url
+                    url: `/search/design/insertSpot`, //url
                     data: {
                         name: place_name,
                         address: place_address,
@@ -198,16 +198,17 @@
                         x: place_x,
                         y: place_y
                     },  //보낼 파라미터 데이터
-                    dataType: "text", //http통신 후 응답 데이터 타입
-                    success: function (res) {
-                        console.log('success');
+                    dataType: "json", //http통신 후 응답 데이터 타입
+                    success: function (spot) {
+                        console.log(spot);
                         const html = `
-                        <div class="card card my-1 mx-2">담기 버튼 수행됨</div>
+                        <div class="card card my-1 mx-2">담기버튼 수행됨</div>
                         `;
                         $('.busket').append(html);
                     } // ajax성공 후 실행할 함수, 서버에서 response 값을 받아서 처리할 수 있다.
                 });
             }
+
             // function getBusket(res) {
             //     console.log('getBusket');
             // }
@@ -294,7 +295,7 @@
     <div class="text-center py-3" style="width:20%; height:80%;">
         <div class="card card text-center py-3 mb-3" style="width:100%; height:90%;">채팅방</div>
         <a class="btn btn-primary py-4" style="width:100%;"
-        th:href="@{|/search/design/detail/${plan.id}?order=1|}"
+           th:href="@{|/search/design/detail/${plan.id}?order=1|}"
         >저장</a>
     </div>
 </div>
