@@ -202,7 +202,10 @@
                     success: function (spot) {
                         console.log(spot);
                         const html = `
-                        <div class="card card my-1 mx-2">담기버튼 수행됨</div>
+                        <div class="card card my-1 mx-2">
+                        <h5>${spot.name}</h5>
+                        <span>${spot.address}</span>
+                        </div>
                         `;
                         $('.busket').append(html);
                     } // ajax성공 후 실행할 함수, 서버에서 response 값을 받아서 처리할 수 있다.
