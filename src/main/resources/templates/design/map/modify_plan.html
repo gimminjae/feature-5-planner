@@ -203,7 +203,7 @@
                         console.log(spot);
                         const html = `
                         <div class="card card my-1 mx-2">
-                        <h5>${spot.name}</h5>
+                        <a class="font-weight-bold" href="https://naver.com">${spot.name}</a>
                         <span>${spot.address}</span>
                         </div>
                         `;
@@ -211,7 +211,7 @@
                     } // ajax성공 후 실행할 함수, 서버에서 response 값을 받아서 처리할 수 있다.
                 });
             }
-
+            //getBusket 구현해 날짜이동시에도 장바구니 내용이 유지되도록 해야함.
             // function getBusket(res) {
             //     console.log('getBusket');
             // }
